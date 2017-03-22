@@ -28,7 +28,7 @@ public class Main extends JFrame {
 		
 		initializeDirectory();
 		
-		JOptionPane.showMessageDialog(this, "Loaded GhostWriter.\nLoad text from .txt file to system clipboard using Ctrl + <file name>,\nnaming from 1.txt to 9.txt.\nCtrl + Shift + X to close.");
+		JOptionPane.showMessageDialog(this, "Loaded GhostWriter.\n\nOpen panel using Alt + C,\nCtrl + Shift + X to close.");
 	}
 	
 	private void initializeDirectory() {
