@@ -1,4 +1,4 @@
-package views;
+package com.dirkarnez.ghostwriter.views;
 
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
@@ -27,8 +27,6 @@ import javax.swing.LayoutStyle;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
@@ -36,11 +34,11 @@ import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
-import itemRenderers.MultiLineCellRenderer;
-import itemRenderers.RowNumberRenderer;
-import main.Main;
-import models.SnippetsModel;
-import utils.ClipBoardManager;
+import com.dirkarnez.ghostwriter.itemRenderers.MultiLineCellRenderer;
+import com.dirkarnez.ghostwriter.itemRenderers.RowNumberRenderer;
+import com.dirkarnez.ghostwriter.Main;
+import com.dirkarnez.ghostwriter.models.SnippetsModel;
+import com.dirkarnez.ghostwriter.utils.ClipBoardManager;
 
 public class TextSelectionPanel extends JFrame {
 
