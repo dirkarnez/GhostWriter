@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -258,7 +259,7 @@ public class TextSelectionPanel extends JFrame {
 
 	private String readTextFromFile(String filename) {
 		try {
-			return IOUtils.toString(new FileInputStream(Main.SNIPPETS_FOLDER_PATH + "/" + filename), Charset.defaultCharset());
+			return IOUtils.toString(new FileInputStream(Main.SNIPPETS_FOLDER_PATH + "/" + filename), StandardCharsets.UTF_8);
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Snippet file not found.");
 		} catch (IOException e) {
