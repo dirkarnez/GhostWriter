@@ -9,8 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -259,13 +262,21 @@ public class TextSelectionPanel extends JFrame {
 
 	private String readTextFromFile(String filename) {
 		try {
-			return IOUtils.toString(new FileInputStream(Main.SNIPPETS_FOLDER_PATH + "/" + filename), StandardCharsets.UTF_8);
+			Pattern r = Pattern.compile("[^\\.]+(\\.[^\\.]+)?\\.txt");
+			Matcher m = r.matcher(filename);
+			String group = m.find() ? m.group(1) : null;
+			Charset charset =  group != null ? Charset.forName(group.substring(1)) : Charset.defaultCharset();
+			return IOUtils.toString(new FileInputStream(Main.SNIPPETS_FOLDER_PATH + "/" + filename), charset);
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Snippet file not found.");
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "File system error.");
+		} catch (UnsupportedCharsetException e) {
+			JOptionPane.showMessageDialog(null, "Unsupported charset");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
-		return null;
+		return "";
 	}
 
 	public void focus(){
